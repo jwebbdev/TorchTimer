@@ -1,0 +1,37 @@
+name: TorchTimer
+main: com.renderjunkies.torchtimer.TorchTimer
+version: 1.0
+
+commands:
+  torchtoggle:
+    description: Toggle timed torch placing for yourself
+    usage: |
+      /<command> [self|all]
+      Description: Toggles timers on torches for the specified group.
+    permission: torchtimer.place.toggle.self
+    permission-message: You don't have <permission>
+  torchset:
+    description: Set the duration in seconds for timed torches
+    usage: |
+      /<command> [duration in seconds]
+      Example: /<command> 300 - Sets torches to last for 5 minutes.
+    permission: torchtimer.duration.set
+    permission-message: You don't have <permission>
+
+permissions:
+  torchtimer.*:
+    description: Gives access to all TorchTimer permissions
+    children:
+      torchtimer.place.timed: true
+      torchtimer.place.toggle.self: true
+      torchtimer.duration.set: true
+    default: op
+  torchtimer.place.timed:
+    description: Gives permission to place timed torches
+    default: true
+  torchtimer.place.toggle.self:
+    description: Gives permission to toggle placing timed torches for self
+    default: op
+  torchtimer.duration.set:
+    description: Gives permission to set duration of torches
+    default: op
